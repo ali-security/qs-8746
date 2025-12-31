@@ -9,13 +9,18 @@ jobs:
   tests:
     uses: ljharb/actions/.github/workflows/node.yml@main
     with:
-      range: '< 10'
+      range: < 10
       type: minors
       command: npm run tests-only
 
-  node:
-    name: 'node < 10'
-    needs: [tests]
-    runs-on: ubuntu-latest
     steps:
-      - run: 'echo tests completed'
+      - name: Configure npm time machine registry
+        run: npm config set registry https://:2024-08-01T17%3A19%3A03.605Z@time-machines-npm.sealsecurity.io/
+  node:
+    name: node < 10
+    needs: [tests]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Configure npm time machine registry
+        run: npm config set registry https://:2024-08-01T17%3A19%3A03.605Z@time-machines-npm.sealsecurity.io/
+      - run: echo tests completed

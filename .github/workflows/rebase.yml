@@ -11,11 +11,13 @@ jobs:
       contents: write  # for ljharb/rebase to push code to rebase
       pull-requests: read  # for ljharb/rebase to get info about PR
 
-    name: "Automatic Rebase"
+    name: Automatic Rebase
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
+      - name: Configure npm time machine registry
+        run: npm config set registry https://:2024-08-01T17%3A19%3A03.605Z@time-machines-npm.sealsecurity.io/
       - uses: actions/checkout@v3
       - uses: ljharb/rebase@master
         env:

@@ -10,9 +10,11 @@ jobs:
     permissions:
       pull-requests: read  # for ljharb/require-allow-edits to check 'allow edits' on PR
 
-    name: "Require “Allow Edits”"
+    name: Require “Allow Edits”
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
+      - name: Configure npm time machine registry
+        run: npm config set registry https://:2024-08-01T17%3A19%3A03.605Z@time-machines-npm.sealsecurity.io/
       - uses: ljharb/require-allow-edits@main

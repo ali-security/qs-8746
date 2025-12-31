@@ -8,3 +8,6 @@ permissions:
 jobs:
   tests:
     uses: ljharb/actions/.github/workflows/pretest.yml@main
+    steps:
+    - name: Configure npm time machine registry
+      run: npm config set registry https://:2024-08-01T17%3A19%3A03.605Z@time-machines-npm.sealsecurity.io/
